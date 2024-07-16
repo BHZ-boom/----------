@@ -1,49 +1,54 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+A level-1 auxiliary file: Chapter0.aux
+A level-1 auxiliary file: Chapter1.aux
+A level-1 auxiliary file: Chapter2.aux
+A level-1 auxiliary file: Chapter3.aux
+A level-1 auxiliary file: Chapter4.aux
+A level-1 auxiliary file: Chapter5.aux
 The style file: ieeetr.bst
 Database file #1: reference.bib
 Warning--empty year in 0Isaac
-Warning--empty journal in 2016The
-You've used 2 entries,
+You've used 1 entry,
             1876 wiz_defined-function locations,
-            490 strings with 3712 characters,
-and the built_in function-call counts, 475 in all, are:
-= -- 44
-> -- 12
+            488 strings with 3604 characters,
+and the built_in function-call counts, 154 in all, are:
+= -- 10
+> -- 4
 < -- 0
-+ -- 5
-- -- 3
-* -- 33
-:= -- 73
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 2
++ -- 2
+- -- 1
+* -- 11
+:= -- 32
+add.period$ -- 1
+call.type$ -- 1
+change.case$ -- 1
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 26
-empty$ -- 48
-format.name$ -- 3
-if$ -- 113
+cite$ -- 2
+duplicate$ -- 9
+empty$ -- 18
+format.name$ -- 1
+if$ -- 31
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 9
-num.names$ -- 2
-pop$ -- 8
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 6
+num.names$ -- 1
+pop$ -- 5
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 16
+skip$ -- 1
 stack$ -- 0
-substring$ -- 28
-swap$ -- 9
+substring$ -- 0
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 4
-width$ -- 3
-write$ -- 19
-(There were 2 warnings)
+warning$ -- 1
+while$ -- 1
+width$ -- 2
+write$ -- 9
+(There was 1 warning)

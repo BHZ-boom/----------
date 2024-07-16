@@ -1,0 +1,19 @@
+\subsection{整体框架}
+本项目使用了VS2022的MFC单文档框架，选择了View类，并继承CFormView类。这样可以在生成菜单的同时，在主界面添加控件。
+项目使用到的类如\autoref{fig:AllClasses}所示，
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 15cm]{类.jpg}
+    \caption{总体设计图}
+    \label{fig:AllClasses}
+\end{figure}
+
+\begin{itemize}
+    \item CalculatorView类负责接受所有主界面控件的消息并执行相应操作。
+    \item DoWithString是.cpp文件，提供了CalculatorView类中声明的
+    applyOp、precedence、evaluate等函数的实现，这些函数共同实现了
+    解析并计算传入的算式字符串，返回结果。
+    \item Fraction类实现分数数据类型。
+    \item CDescribeStat和CMatrixManip分别是菜单功能“描述性统计”和“矩阵运算”对话框
+        的关联类，负责实现对话框中控件的消息响应和功能
+\end{itemize}

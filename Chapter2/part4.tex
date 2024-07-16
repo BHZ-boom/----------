@@ -1,0 +1,51 @@
+\subsection{Fraction类}
+Fraction类负责提供分数数据类型，
+支持分数的存储，四则运算，以及基本函数运算。
+\begin{lstlisting}
+    class Fraction
+    {
+    private:
+        long long m_numerator;
+        long long m_denominator;
+    public:
+        //构造函数
+        explicit Fraction(long long above = 0, long long below = 1); 
+        Fraction(const Fraction& rhs); //复制构造函数
+        Fraction(long double input); //小数转化成分数
+        void reset(long long above, long long below); //重置分数值
+        void gcd(); //化简
+        long long up(); //返回分子的值
+        long long down(); //返回分母的值
+        friend Fraction operator+(const Fraction& left, 
+            const Fraction& right);
+        ...... // 四则运算符重载
+        friend Fraction pow(Fraction& left, 
+            Fraction& right);
+        .... // 幂函数、对数函数等函数的重载
+    };    
+\end{lstlisting}
+为了尽可能提高运算精度，分子和分母均为long long类型。大多数成员函数的
+实现都比较简单，具体可查看附录，此处具体解释小数转分数的构造函数实现：
+\begin{lstlisting}
+    Fraction::Fraction(long double decimal) {
+        // 取传入小数的整数部分
+        long long intPart = static_cast<long long>(decimal);
+        if (intPart == decimal) {
+            // 整数部分等于整体，说明小数部分为0，传入的是整数
+            m_denominator = 1;
+            m_numerator = intPart;
+        }
+        else {
+            const long precision = 1000000; // 定义精度
+            // 将传入小数乘以精度后取整，即得到分子
+            this->m_numerator = static_cast<long long>(round(decimal * precision));
+            this->m_denominator = precision;
+    
+        }
+        // 化简以精度为分母的分数
+        this->gcd();
+    }
+\end{lstlisting}
+为了使转化后的分数视觉上直观，设置了转化精度。
+
+

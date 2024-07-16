@@ -1,0 +1,61 @@
+\subsection{CalculatorView类}
+本小节依照用户信息的输入顺序阐述消息传递的具体实现。在设计之初，为CalculatorView添加
+CString成员变量m\_input用于储存用户在编辑框输入的字符串。
+现在假设用户要计算$1+2$，
+当用户点击按钮"1"，系统会调用CalculatorView中其对应的消息响应函数：
+\begin{lstlisting}
+    void CCalculatorView::OnBnClickedButton1()
+    {
+        m_input += _T("1");
+        UpdateData(FALSE);
+    }
+\end{lstlisting}
+此函数将字符“1”添加在m\_input末尾，并将m\_input的值在窗口更新。"+"和"2"，以及其他所有
+数字和运算符的函数都同理。
+
+在这之后，用户会点击“=”，对应的消息响应函数如下：
+\begin{lstlisting}
+    void CCalculatorView::OnBnClickedButtonEqual()
+    {
+	if (m_FractionMode.GetCheck() == BST_UNCHECKED) {
+		evaluate(m_input, 1);
+	}
+	else {
+		evaluate(m_input, 2);
+	}
+	UpdateData(FALSE);
+    }
+\end{lstlisting}
+m\_FractionMode也是CalculatorView类的成员变量，其关联对话框中的“分数模式”
+勾选状态，通过检测其状态来确定evaluate函数的模式，evaluate负责计算结果并更新m\_input。
+至此，完成了$1+2$的计算。
+
+在点击菜单中“表述性统计”时，调用下面的函数：
+\begin{lstlisting}
+    void CCalculatorView::OnStatDescribe()
+    {
+	    CDescribeStat ds;
+	    ds.DoModal();
+    }
+\end{lstlisting}
+此函数调用CDescribeStat类的DoModal函数，生成新的对话框，“矩阵运算”
+同理。
+
+为了实现“高级”中设置控件可见性的功能，引用了辅助函数
+checkVisibility：
+\begin{lstlisting}
+    void CCalculatorView::checkVisibility(int ID)
+    {
+        // 检查控件当前是否可见
+        CWnd* pControl = GetDlgItem(ID);
+        if (pControl && pControl->IsWindowVisible())
+        {
+            pControl->ShowWindow(SW_HIDE);  // 当前可见则隐藏
+        }
+        else
+        {
+            pControl->ShowWindow(SW_SHOW);  // 当前隐藏则显示
+        }
+    }
+\end{lstlisting}
+利用此函数，可以轻易实现“高级”和“分数模式”的消息处理函数。

@@ -105,8 +105,8 @@
 }
 
 \newcommand\headl[1]{\def\headl{#1}}
-\newcommand\headc[1]{\def\headc{#1}}
-\newcommand\headr[1]{\def\headr{#1}}
+% \newcommand\headc[1]{\def\headc{#1}}
+% \newcommand\headr[1]{\def\headr{#1}}
 \newcommand\lessonTitle[1]{\def\lessonTitle{#1}}
 \newcommand\reportTitle[1]{\def\reportTitle{#1}}
 \newcommand\stuname[1]{\def\stuname{#1}}
@@ -118,8 +118,8 @@
 %%页眉设置
 \pagestyle{fancy}
 \fancyhead[L]{\fangsong {\headl}}
-\fancyhead[C]{\fangsong {\headc}}
-\fancyhead[R]{\fangsong {\headr}}
+% \fancyhead[C]{\fangsong {\headc}}
+% \fancyhead[R]{\fangsong {\headr}}
 %% 去掉页眉横线
 % \renewcommand{\headrulewidth}{0pt}
 

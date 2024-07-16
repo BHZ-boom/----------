@@ -1,0 +1,61 @@
+\subsection{CMatrixManip类}
+CDescribeStat类是\autoref{fig:MatrixManip}
+对话框的关联类，添加的成员函数如下：
+\begin{lstlisting}
+public:
+    //定义矩阵数据类型
+    typedef std::vector<std::vector<long double>> Matrix; 
+    // 存储编辑框中输入的内容
+	CString m_A;
+	CString m_B;
+	CString m_C;
+
+    // 将m_A，m_B，内容读取为矩阵类型m_MA，m_MB
+    Matrix m_MA, m_MB;
+    void readOneMatrix(const CString& input, Matrix& matrix);
+    void readMatrix(); 
+
+    // 矩阵加法、减法、乘法的消息处理及运算
+	afx_msg void OnBnClickedButtonPlus();
+	afx_msg void OnBnClickedButtonMinus();
+	afx_msg void OnBnClickedButtonMul();
+	
+    // 将矩阵类型转化为字符串
+	void Matrix2String(const Matrix& a, CString& b);
+\end{lstlisting}
+
+
+readOneMatrix函数使用CString自带的Tokenize方法，使用循环将字符串按矩阵的行分割，
+然后将每一行分割为多个元素，储存到自定义的Matrix类型中。
+\begin{lstlisting}
+    void CMatrixManip::readOneMatrix(const CString& input,Matrix& matrix)
+    {
+        int pos = 0;
+        CString token;
+        CString delimiters = _T("\r\n"); // 列分隔符
+    
+        // 分割字符串为多个行
+        CString rowString = input.Tokenize(delimiters, pos);
+        while (pos != -1) {
+            std::vector<long double> row;
+            int rowPos = 0;
+            CString rowDelimiter = _T(" "); // 行内元素分隔符
+            CString element = rowString.Tokenize(rowDelimiter, rowPos);
+    
+            // 分割行为多个元素
+            while (rowPos != -1) {
+                // 转换CString到long double
+                long double num = _tcstold(element, NULL); 
+                row.push_back(num);
+                element = rowString.Tokenize(rowDelimiter, rowPos);
+            }
+    
+            matrix.push_back(row);
+            // 当剩余字符串没有分隔符，返回-1
+            rowString = input.Tokenize(delimiters, pos); 
+        }
+    }
+\end{lstlisting}
+其余函数均容易实现，具体代码及注释见附录CMatrixManip.cpp。
+
+
